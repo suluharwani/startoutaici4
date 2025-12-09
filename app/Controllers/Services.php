@@ -388,4 +388,32 @@ class Services extends BaseController
             ]
         ];
     }
+    public function socialMedia()
+    {
+        $data = [
+            'title' => 'Social Media - Startout AI',
+            'description' => 'Social Media Startout AI',
+            'page' => 'social-media',
+            'features' => $this->getAnnotationFeatures()
+        ];
+
+        return view('templates/header', $data)
+             . view('templates/nav')
+             . view('page/social_media', $data)
+             . view('templates/footer');
+    }
+        public function gamingEntertainment()
+    {
+        $data = [
+            'title' => 'tartout AI',
+            'description' => 'Gaming&Entertainment',
+            'page' => 'social-media',
+            'features' => $this->getAnnotationFeatures()
+        ];
+
+        return view('templates/header', $data)
+             . view('templates/nav')
+             . view('page/gaming_entertainment', $data)
+             . view('templates/footer');
+    }
 }

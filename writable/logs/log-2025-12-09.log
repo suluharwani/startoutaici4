@@ -1,0 +1,20 @@
+CRITICAL - 2025-12-09 17:25:06 --> Error: Call to undefined method App\Controllers\Industries::getAnnotationFeatures()
+[Method: GET, Route: industries/gaming-entertainment]
+in APPPATH\Controllers\Industries.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Industries->gamingEntertainment()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Industries))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('D:\\project\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-09 17:26:22 --> Error: Call to undefined method App\Controllers\Industries::getAnnotationFeatures()
+[Method: GET, Route: industries/gaming-entertainment]
+in APPPATH\Controllers\Industries.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Industries->gamingEntertainment()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Industries))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('D:\\project\\startoutaici4\\public\\index.php')

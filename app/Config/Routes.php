@@ -26,3 +26,4 @@ $routes->get('press', 'Home::press');
 $routes->get('our-work', 'Home::ourWork');
 $routes->get('why-startout-ai', 'Home::whyStartoutAI');
 $routes->get('resources', 'Home::resources');
+$routes->get('start-journey', 'Home::startJourney');

@@ -11,21 +11,50 @@ class Services extends BaseController
         $this->serviceModel = new ServiceModel();
     }
     public function talentsolution()
-    {
-        $data = [
-            'title' => 'Talent Solution Services - Startout AI',
-            'description' => 'Build your dream team with our curated network of AI and tech professionals. Pre-vetted talent for your business needs.',
-            'page' => 'talent-solution',
-            'benefits' => $this->getTalentBenefits(),
-            'roles' => $this->getAvailableRoles(),
-            'process' => $this->getTalentProcess()
-        ];
+{
+    // Load model
+    $talentModel = new \App\Models\TalentModel();
+    
+    // Get page data from database
+    $pageData = $talentModel->getPageData();
+    
+    // Get related data from database
+    $benefits = $talentModel->getBenefits($pageData['id']);
+    $roles = $talentModel->getRoles($pageData['id']);
+    $processSteps = $talentModel->getProcessSteps($pageData['id']);
+    
+    $data = [
+        'title' => 'Talent Solution Services - Startout AI',
+        'description' => 'Build your dream team with our curated network of AI and tech professionals. Pre-vetted talent for your business needs.',
+        'page' => 'talent-solution',
+        
+        // Hero section
+        'hero_title' => $pageData['hero_title'] ?? '<span class="gradient-text">Talent Solutions</span>',
+        'hero_subtitle' => $pageData['hero_subtitle'] ?? 'Build your dream team with our curated network of AI and tech professionals',
+        
+        // Benefits section
+        'benefits_title' => $pageData['benefits_title'] ?? 'Why Our Talent Solutions',
+        'benefits' => $benefits,
+        
+        // Roles section
+        'roles_title' => $pageData['roles_title'] ?? 'Available Roles',
+        'roles' => $roles,
+        
+        // Process section
+        'process_title' => $pageData['process_title'] ?? 'How It Works',
+        'processSteps' => $processSteps,
+        
+        // CTA section
+        'cta_title' => $pageData['cta_title'] ?? 'Ready to Build Your Team?',
+        'cta_subtitle' => $pageData['cta_subtitle'] ?? 'Let\'s discuss your talent requirements',
+        'cta_button_text' => $pageData['cta_button_text'] ?? 'Schedule Consultation'
+    ];
 
-        return view('templates/header', $data)
-             . view('templates/nav')
-             . view('page/talent_solution', $data)
-             . view('templates/footer');
-    }
+    return view('templates/header', $data)
+         . view('templates/nav')
+         . view('page/talent_solution', $data)
+         . view('templates/footer');
+}
 
     private function getTalentBenefits()
     {
@@ -240,20 +269,72 @@ private function getDefaultAnnotationStats()
     ];
 }
 
-    public function trustsafety()
-    {
+public function trustsafety()
+{
+    // Load model
+    $trustSafetyModel = new \App\Models\TrustSafetyModel();
+    
+    // Get page data from database
+    $pageData = $trustSafetyModel->getPageData();
+    
+    // Jika belum ada data di database, buat data default
+    if (!$pageData) {
         $data = [
-            'title' => 'Trust Safety - Startout AI',
-            'description' => 'Professional data annotation services powered by AI and human expertise. High-quality data labeling for machine learning models.',
-            'page' => 'data-annotation',
-            'features' => $this->getTrustSafetyFeatures()
+            'title' => 'Trust & Safety Solutions - Startout AI',
+            'description' => 'Protect your platform with comprehensive AI-powered trust and safety services. Ensure secure, compliant, and positive user experiences.',
+            'page' => 'trust-safety',
+            'hero_title' => 'Trust & <span class="gradient-text">Safety</span> Solutions',
+            'hero_subtitle' => 'Protect your platform with comprehensive AI-powered trust and safety services. Ensure secure, compliant, and positive user experiences.',
+            'services_title' => 'Comprehensive Trust & Safety Services',
+            'services_subtitle' => 'Our multi-layered approach combines AI technology with human expertise to deliver robust safety solutions',
+            'how_it_works_title' => 'How Our Trust & Safety Works',
+            'how_it_works_subtitle' => 'A seamless process that scales with your platform\'s needs',
+            'benefits_title' => 'Why Choose Our Trust & Safety Solutions?',
+            'cta_title' => 'Ready to enhance your platform\'s trust and safety?',
+            'cta_subtitle' => 'Contact us for a customized solution.',
+            'features' => $trustSafetyModel->getDefaultFeatures(),
+            'stats' => $trustSafetyModel->getDefaultStats()
         ];
-
-        return view('templates/header', $data)
-             . view('templates/nav')
-             . view('page/trust_safety', $data)
-             . view('templates/footer');
+    } else {
+        // Get related data from database
+        $features = $trustSafetyModel->getFeatures($pageData['id']);
+        $stats = $trustSafetyModel->getStats($pageData['id']);
+        
+        $data = [
+            'title' => 'Trust & Safety Solutions - Startout AI',
+            'description' => $pageData['hero_subtitle'] ?? 'Protect your platform with comprehensive AI-powered trust and safety services. Ensure secure, compliant, and positive user experiences.',
+            'page' => 'trust-safety',
+            
+            // Hero section
+            'hero_title' => $pageData['hero_title'] ?? 'Trust & <span class="gradient-text">Safety</span> Solutions',
+            'hero_subtitle' => $pageData['hero_subtitle'] ?? 'Protect your platform with comprehensive AI-powered trust and safety services. Ensure secure, compliant, and positive user experiences.',
+            
+            // Services section
+            'services_title' => $pageData['services_title'] ?? 'Comprehensive Trust & Safety Services',
+            'services_subtitle' => $pageData['services_subtitle'] ?? 'Our multi-layered approach combines AI technology with human expertise to deliver robust safety solutions',
+            
+            // How It Works section
+            'how_it_works_title' => $pageData['how_it_works_title'] ?? 'How Our Trust & Safety Works',
+            'how_it_works_subtitle' => $pageData['how_it_works_subtitle'] ?? 'A seamless process that scales with your platform\'s needs',
+            
+            // Benefits section
+            'benefits_title' => $pageData['benefits_title'] ?? 'Why Choose Our Trust & Safety Solutions?',
+            
+            // CTA section
+            'cta_title' => $pageData['cta_title'] ?? 'Ready to enhance your platform\'s trust and safety?',
+            'cta_subtitle' => $pageData['cta_subtitle'] ?? 'Contact us for a customized solution.',
+            
+            // Dynamic content
+            'features' => !empty($features) ? $features : $trustSafetyModel->getDefaultFeatures(),
+            'stats' => !empty($stats) ? $stats : $trustSafetyModel->getDefaultStats()
+        ];
     }
+
+    return view('templates/header', $data)
+         . view('templates/nav')
+         . view('page/trust_safety', $data)
+         . view('templates/footer');
+}
 
     private function getAnnotationFeatures()
     {
@@ -550,19 +631,180 @@ public function customersupport()
         ];
     }
     public function socialMedia()
-    {
+{
+    // Load model
+    $socialMediaModel = new \App\Models\SocialMediaModel();
+    
+    // Get page data from database
+    $pageData = $socialMediaModel->getPageByName('social-media');
+    
+    // Jika belum ada data di database, buat data default
+    if (!$pageData) {
         $data = [
-            'title' => 'Social Media - Startout AI',
-            'description' => 'Social Media Startout AI',
+            'title' => 'Social Media Management - Startout AI',
+            'description' => 'Amplify your brand presence with AI-powered social media strategies that drive engagement and growth',
             'page' => 'social-media',
-            'features' => $this->getAnnotationFeatures()
+            'hero_title' => '<span class="gradient-text">Social Media</span> Management',
+            'hero_subtitle' => 'Amplify your brand presence with AI-powered social media strategies that drive engagement and growth',
+            'services_title' => 'Our Social Media Services',
+            'platforms_title' => 'Platforms We Manage',
+            'included_title' => 'What\'s Included',
+            'stats_title' => 'Our Impact',
+            'cta_title' => 'Ready to Grow Your Social Presence?',
+            'cta_subtitle' => 'Let\'s create a winning social media strategy together',
+            'cta_button_text' => 'Schedule Consultation',
+            'services' => $this->getDefaultSocialMediaServices(),
+            'platforms' => $this->getDefaultSocialMediaPlatforms(),
+            'included' => $this->getDefaultSocialMediaIncluded(),
+            'stats' => $this->getDefaultSocialMediaStats()
         ];
-
-        return view('templates/header', $data)
-             . view('templates/nav')
-             . view('page/social_media', $data)
-             . view('templates/footer');
+    } else {
+        // Get related data from database
+        $services = $socialMediaModel->getServices($pageData['id']);
+        $platforms = $socialMediaModel->getPlatforms($pageData['id']);
+        $included = $socialMediaModel->getIncluded($pageData['id']);
+        $stats = $socialMediaModel->getStats($pageData['id']);
+        
+        $data = [
+            'title' => 'Social Media Management - Startout AI',
+            'description' => $pageData['hero_subtitle'] ?? 'Amplify your brand presence with AI-powered social media strategies that drive engagement and growth',
+            'page' => 'social-media',
+            
+            // Hero section
+            'hero_title' => $pageData['hero_title'] ?? '<span class="gradient-text">Social Media</span> Management',
+            'hero_subtitle' => $pageData['hero_subtitle'] ?? 'Amplify your brand presence with AI-powered social media strategies that drive engagement and growth',
+            
+            // Section titles
+            'services_title' => $pageData['services_title'] ?? 'Our Social Media Services',
+            'platforms_title' => $pageData['platforms_title'] ?? 'Platforms We Manage',
+            'included_title' => $pageData['included_title'] ?? 'What\'s Included',
+            'stats_title' => $pageData['stats_title'] ?? 'Our Impact',
+            'cta_title' => $pageData['cta_title'] ?? 'Ready to Grow Your Social Presence?',
+            'cta_subtitle' => $pageData['cta_subtitle'] ?? 'Let\'s create a winning social media strategy together',
+            'cta_button_text' => $pageData['cta_button_text'] ?? 'Schedule Consultation',
+            
+            // Dynamic content
+            'services' => !empty($services) ? $services : $this->getDefaultSocialMediaServices(),
+            'platforms' => !empty($platforms) ? $platforms : $this->getDefaultSocialMediaPlatforms(),
+            'included' => !empty($included) ? $included : $this->getDefaultSocialMediaIncluded(),
+            'stats' => !empty($stats) ? $stats : $this->getDefaultSocialMediaStats()
+        ];
     }
+
+    return view('templates/header', $data)
+         . view('templates/nav')
+         . view('page/social_media', $data)
+         . view('templates/footer');
+}
+
+// Helper methods untuk data default social media
+private function getDefaultSocialMediaServices()
+{
+    return [
+        [
+            'icon' => 'fas fa-comments',
+            'title' => 'Community Management',
+            'description' => 'Engage with your audience and build strong community relationships across all platforms.'
+        ],
+        [
+            'icon' => 'fas fa-chart-line',
+            'title' => 'Content Strategy',
+            'description' => 'Data-driven content planning and creation that resonates with your target audience.'
+        ],
+        [
+            'icon' => 'fas fa-calendar-alt',
+            'title' => 'Content Scheduling',
+            'description' => 'Optimize posting times and maintain consistent presence across all channels.'
+        ],
+        [
+            'icon' => 'fas fa-chart-bar',
+            'title' => 'Analytics & Reporting',
+            'description' => 'Track performance metrics and gain insights to improve your social strategy.'
+        ]
+    ];
+}
+
+private function getDefaultSocialMediaPlatforms()
+{
+    return [
+        [
+            'name' => 'Facebook',
+            'description' => 'Community building and targeted advertising'
+        ],
+        [
+            'name' => 'Instagram',
+            'description' => 'Visual storytelling and influencer partnerships'
+        ],
+        [
+            'name' => 'Twitter/X',
+            'description' => 'Real-time engagement and brand voice'
+        ],
+        [
+            'name' => 'LinkedIn',
+            'description' => 'Professional networking and B2B marketing'
+        ],
+        [
+            'name' => 'TikTok',
+            'description' => 'Viral content and Gen Z engagement'
+        ],
+        [
+            'name' => 'YouTube',
+            'description' => 'Video content and channel growth'
+        ]
+    ];
+}
+
+private function getDefaultSocialMediaIncluded()
+{
+    return [
+        [
+            'title' => 'Content Creation',
+            'description' => 'Professional graphics, videos, and copy tailored to each platform'
+        ],
+        [
+            'title' => 'Audience Engagement',
+            'description' => 'Respond to comments, messages, and mentions in real-time'
+        ],
+        [
+            'title' => 'Campaign Management',
+            'description' => 'Plan and execute targeted campaigns to achieve your goals'
+        ],
+        [
+            'title' => 'Influencer Outreach',
+            'description' => 'Connect with influencers to expand your reach'
+        ],
+        [
+            'title' => 'Crisis Management',
+            'description' => 'Quick response to negative feedback and reputation protection'
+        ],
+        [
+            'title' => 'Monthly Reports',
+            'description' => 'Detailed analytics and insights on your social performance'
+        ]
+    ];
+}
+
+private function getDefaultSocialMediaStats()
+{
+    return [
+        [
+            'value' => '250%',
+            'label' => 'Avg. Engagement Increase'
+        ],
+        [
+            'value' => '50+',
+            'label' => 'Brands Managed'
+        ],
+        [
+            'value' => '10M+',
+            'label' => 'Content Impressions'
+        ],
+        [
+            'value' => '24/7',
+            'label' => 'Monitoring'
+        ]
+    ];
+}
         public function gamingEntertainment()
     {
         $data = [

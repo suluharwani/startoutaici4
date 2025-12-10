@@ -82,4 +82,46 @@ class Industries extends BaseController
              . view('page/ecommerce_retail', $data)
              . view('templates/footer');
     }
+        public function technology()
+    {
+        $data = [
+            'title' => 'Startout AI - Technology Solutions',
+            'description' => 'AI-powered technology solutions for accelerating innovation and streamlining operations',
+            'page' => 'technology',
+            'features' => $this->getAnnotationFeatures()
+        ];
+
+        return view('templates/header', $data)
+             . view('templates/nav')
+             . view('page/technology', $data)
+             . view('templates/footer');
+    }
+     public function travelTourism()
+    {
+        $data = [
+            'title' => 'Startout AI - Travel & Tourism Solutions',
+            'description' => 'AI-powered solutions to enhance traveler experiences and streamline travel industry operations',
+            'page' => 'travel-tourism',
+            'features' => $this->getAnnotationFeatures()
+        ];
+
+        return view('templates/header', $data)
+             . view('templates/nav')
+             . view('page/travel_tourism', $data)
+             . view('templates/footer');
+    }
+     public function automotiveMobility()
+    {
+        $data = [
+            'title' => 'Startout AI - Automotive & Mobility Solutions',
+            'description' => 'AI-powered solutions for the future of automotive and mobility innovation',
+            'page' => 'automotive-mobility',
+            'features' => $this->getAnnotationFeatures()
+        ];
+
+        return view('templates/header', $data)
+             . view('templates/nav')
+             . view('page/automotive_mobility', $data)
+             . view('templates/footer');
+    }
 }

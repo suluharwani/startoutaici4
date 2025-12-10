@@ -221,6 +221,65 @@
         .back-to-top:hover {
             transform: translateY(-3px);
         }
+        .gradient-border-card {
+    position: relative;
+    background: var(--card);
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+.gradient-border-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -1px;
+    border-radius: inherit;
+    background: var(--gradient-primary);
+    opacity: 0.5;
+}
+.hover-scale {
+    transition: all 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+/* Tambahkan di bagian :root atau CSS yang ada */
+.gradient-from-green-500-to-emerald-500 {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.gradient-from-blue-500-to-cyan-500 {
+    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+}
+
+.gradient-from-purple-500-to-indigo-500 {
+    background: linear-gradient(135deg, #8b5cf6 0%, #4f46e5 100%);
+}
+
+/* Card hover effects */
+.hover\:-translate-y-1:hover {
+    transform: translateY(-4px);
+}
+
+.hover\:shadow-lg:hover {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Input styling */
+input[type="text"], input[type="email"] {
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus {
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    border-color: var(--primary);
+}
     </style>
 </head>
 <body>

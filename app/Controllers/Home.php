@@ -132,40 +132,26 @@ class Home extends BaseController
              . view('page/process_automation', $data)
              . view('templates/footer');
     }
-    public function about()
+public function about()
 {
+    // Load model
+    $aboutModel = new \App\Models\AboutModel();
+    
+    // Ambil data dari database
+    $aboutData = $aboutModel->getAboutPageData();
+    
     $data = [
         'title' => 'About Startout AI - Building the Future of AI',
         'description' => 'Founded in 2024, Startout AI is on a mission to empower businesses with intelligent automation and data-driven insights.',
         'page' => 'about',
-        'stats' => [
-            ['value' => '500+', 'label' => 'Customers Worldwide'],
-            ['value' => '50M+', 'label' => 'AI Operations Daily'],
-            ['value' => '99.99%', 'label' => 'Uptime SLA'],
-            ['value' => '24/7', 'label' => 'Support Available']
-        ],
-        'values' => [
-            [
-                'icon' => 'fas fa-bullseye',
-                'title' => 'Mission-Driven',
-                'description' => "We're committed to democratizing AI and making it accessible to businesses of all sizes."
-            ],
-            [
-                'icon' => 'fas fa-heart',
-                'title' => 'Customer First',
-                'description' => 'Your success is our success. We go above and beyond to ensure you achieve your goals.'
-            ],
-            [
-                'icon' => 'fas fa-lightbulb',
-                'title' => 'Innovation',
-                'description' => 'We continuously push boundaries to deliver cutting-edge AI solutions.'
-            ],
-            [
-                'icon' => 'fas fa-users',
-                'title' => 'Collaboration',
-                'description' => 'We believe in the power of partnership and working together toward common goals.'
-            ]
-        ]
+        'hero_title' => $aboutData['hero_title'],
+        'hero_subtitle' => $aboutData['hero_subtitle'],
+        'story_title' => $aboutData['story_title'],
+        'story_content' => $aboutData['story_content'],
+        'values_title' => $aboutData['values_title'],
+        'stats_title' => $aboutData['stats_title'],
+        'values' => $aboutModel->getAboutValues($aboutData['id']),
+        'stats' => $aboutModel->getAboutStats($aboutData['id'])
     ];
 
     return view('templates/header', $data)
@@ -173,55 +159,74 @@ class Home extends BaseController
          . view('page/about', $data)
          . view('templates/footer');
 }
+// Update method career() di Home.php
 public function career()
 {
+    // Load model
+    $careerModel = new \App\Models\CareerModel();
+    
+    // Ambil data dari database
+    $pageData = $careerModel->getCareerPageData();
+    $benefits = $careerModel->getBenefits($pageData['id']);
+    $positions = $careerModel->getActivePositions($pageData['id']);
+    
+    // Format benefits untuk view
+    $formattedBenefits = [];
+    foreach ($benefits as $benefit) {
+        $formattedBenefits[] = $benefit['benefit'];
+    }
+    
+    // Format positions untuk view
+    $formattedPositions = [];
+    foreach ($positions as $position) {
+        $formattedPositions[] = [
+            'title' => $position['title'],
+            'description' => $position['description'],
+            'location' => $position['location'],
+            'type' => $position['employment_type'],
+            'department' => $position['department'],
+            'apply_url' => $position['apply_url'] // Tambahkan ini
+        ];
+    }
+    
     $data = [
         'title' => 'Careers at Startout AI - Join Our Mission',
         'description' => 'Help us shape the future of AI-powered business solutions. We\'re looking for talented, passionate people to join our team.',
         'page' => 'career',
-        'benefits' => [
-            'Competitive salary and equity',
-            'Health, dental, and vision insurance',
-            'Flexible remote work',
-            'Unlimited PTO',
-            'Learning and development budget',
-            'Latest hardware and tools'
-        ],
-        'positions' => [
-            [
-                'title' => 'Senior AI Engineer',
-                'description' => 'Build and deploy cutting-edge AI models that power our platform.',
-                'location' => 'Remote',
-                'type' => 'Full-time',
-                'department' => 'Engineering'
-            ],
-            [
-                'title' => 'Product Designer',
-                'description' => 'Design beautiful, intuitive experiences for our customers.',
-                'location' => 'San Francisco, CA',
-                'type' => 'Full-time',
-                'department' => 'Design'
-            ],
-            [
-                'title' => 'Customer Success Manager',
-                'description' => 'Help our customers succeed with AI transformation.',
-                'location' => 'Remote',
-                'type' => 'Full-time',
-                'department' => 'Customer Success'
-            ],
-            [
-                'title' => 'DevOps Engineer',
-                'description' => 'Build and maintain our cloud infrastructure at scale.',
-                'location' => 'New York, NY',
-                'type' => 'Full-time',
-                'department' => 'Engineering'
-            ]
-        ]
+        'hero_title' => $pageData['hero_title'],
+        'hero_subtitle' => $pageData['hero_subtitle'],
+        'benefits_title' => $pageData['benefits_title'],
+        'positions_title' => $pageData['positions_title'],
+        'benefits' => $formattedBenefits,
+        'positions' => $formattedPositions
     ];
 
     return view('templates/header', $data)
          . view('templates/nav')
          . view('page/career', $data)
+         . view('templates/footer');
+}
+
+// Tambahkan method untuk halaman detail posisi
+public function careerPosition($slug)
+{
+    $careerModel = new \App\Models\CareerModel();
+    $position = $careerModel->getPositionBySlug($slug);
+    
+    if (!$position) {
+        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+    
+    $data = [
+        'title' => $position['title'] . ' - Careers at Startout AI',
+        'description' => $position['description'],
+        'page' => 'career-position',
+        'position' => $position
+    ];
+    
+    return view('templates/header', $data)
+         . view('templates/nav')
+         . view('page/career_position', $data)
          . view('templates/footer');
 }
 public function press()

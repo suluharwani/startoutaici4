@@ -1,0 +1,234 @@
+ERROR - 2025-12-10 03:48:00 --> Error connecting to the database: mysqli_sql_exception: Plugin 'mysql_native_password' is not loaded in C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\Users\suluh\Documents\GitHub\startoutaici4\app\Models\AboutModel.php(19): CodeIgniter\BaseModel->first()
+#7 C:\Users\suluh\Documents\GitHub\startoutaici4\app\Controllers\Home.php(141): App\Models\AboutModel->getAboutPageData()
+#8 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Home->about()
+#9 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\Users\suluh\Documents\GitHub\startoutaici4\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\Users\\suluh\\...')
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Plugin 'mysql_native_password' is not loaded in C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#5 C:\Users\suluh\Documents\GitHub\startoutaici4\app\Models\AboutModel.php(19): CodeIgniter\BaseModel->first()
+#6 C:\Users\suluh\Documents\GitHub\startoutaici4\app\Controllers\Home.php(141): App\Models\AboutModel->getAboutPageData()
+#7 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Home->about()
+#8 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\suluh\Documents\GitHub\startoutaici4\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\suluh\Documents\GitHub\startoutaici4\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\Users\\suluh\\...')
+#14 {main}
+CRITICAL - 2025-12-10 03:48:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Plugin 'mysql_native_password' is not loaded
+[Method: GET, Route: about]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `about_pages`
+ LIMIT 1', [], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Models\AboutModel.php(19): CodeIgniter\BaseModel->first()
+ 6 APPPATH\Controllers\Home.php(141): App\Models\AboutModel->getAboutPageData()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->about()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:44:32 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "page/trust-safety.php"
+[Method: GET, Route: services/trust-safety]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('page/trust-safety.php')
+ 2 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/trust-safety', [], true)
+ 3 APPPATH\Controllers\Services.php(439): view('page/trust-safety', [...])
+ 4 APPPATH\Controllers\Services.php(390): App\Controllers\Services->renderServicePage('trust-safety')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->trustsafety()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:52:08 --> ErrorException: Undefined variable $benefits_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 119.
+ 1 APPPATH\Views\page\dataanotation.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $benefits_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 119)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(96): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:52:14 --> ErrorException: Undefined variable $hero_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 5.
+ 1 APPPATH\Views\page\dataanotation.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $hero_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(130): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:52:29 --> ErrorException: Undefined variable $hero_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 5.
+ 1 APPPATH\Views\page\dataanotation.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $hero_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(130): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:52:30 --> ErrorException: Undefined variable $hero_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 5.
+ 1 APPPATH\Views\page\dataanotation.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $hero_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(130): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:52:38 --> ErrorException: Undefined variable $hero_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 5.
+ 1 APPPATH\Views\page\dataanotation.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $hero_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(130): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:52:50 --> ErrorException: Undefined variable $hero_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 5.
+ 1 APPPATH\Views\page\dataanotation.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $hero_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(130): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:52:51 --> ErrorException: Undefined variable $hero_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 5.
+ 1 APPPATH\Views\page\dataanotation.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $hero_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(130): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:53:11 --> ErrorException: Undefined variable $hero_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 5.
+ 1 APPPATH\Views\page\dataanotation.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $hero_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(130): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:53:22 --> ErrorException: Undefined variable $hero_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 5.
+ 1 APPPATH\Views\page\dataanotation.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $hero_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(130): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:53:45 --> ErrorException: Undefined variable $hero_subtitle
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 8.
+ 1 APPPATH\Views\page\dataanotation.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $hero_subtitle', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 8)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(131): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')
+CRITICAL - 2025-12-10 04:54:23 --> ErrorException: Undefined variable $benefits_title
+[Method: GET, Route: services/data-annotation]
+in APPPATH\Views\page\dataanotation.php on line 119.
+ 1 APPPATH\Views\page\dataanotation.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $benefits_title', 'C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php', 119)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\app\\Views\\page\\dataanotation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('page/dataanotation', [], true)
+ 5 APPPATH\Controllers\Services.php(153): view('page/dataanotation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Services->dataanotation()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Services))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\suluh\\Documents\\GitHub\\startoutaici4\\public\\index.php')

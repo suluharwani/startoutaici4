@@ -2,9 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Models\IndustryModel;
 
 class Industries extends BaseController
 {
+    private $industryModel;
+    
+    public function __construct()
+    {
+        $this->industryModel = new IndustryModel();
+    }
     private function getAnnotationFeatures()
     {
         return [
@@ -112,11 +119,29 @@ class Industries extends BaseController
     }
      public function automotiveMobility()
     {
+        // Get page data from database
+        $pageData = $this->industryModel->getPageByName('automotive-mobility');
+        
+        // Get related data
+        $solutions = $this->industryModel->getSolutions($pageData['id']);
+        $useCases = $this->industryModel->getUseCases($pageData['id']);
+        $metrics = $this->industryModel->getMetrics($pageData['id']);
+        
         $data = [
             'title' => 'Startout AI - Automotive & Mobility Solutions',
             'description' => 'AI-powered solutions for the future of automotive and mobility innovation',
             'page' => 'automotive-mobility',
-            'features' => $this->getAnnotationFeatures()
+            'hero_title' => $pageData['hero_title'],
+            'hero_subtitle' => $pageData['hero_subtitle'],
+            'solutions_title' => $pageData['solutions_title'],
+            'use_cases_title' => $pageData['use_cases_title'],
+            'impact_title' => $pageData['impact_title'],
+            'cta_title' => $pageData['cta_title'],
+            'cta_subtitle' => $pageData['cta_subtitle'],
+            'cta_button_text' => $pageData['cta_button_text'],
+            'solutions' => $solutions,
+            'use_cases' => $useCases,
+            'metrics' => $metrics
         ];
 
         return view('templates/header', $data)

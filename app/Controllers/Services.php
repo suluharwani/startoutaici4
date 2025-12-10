@@ -1,9 +1,15 @@
 <?php
 
 namespace App\Controllers;
-
+use App\Models\ServiceModel;
 class Services extends BaseController
 {
+     private $serviceModel;
+    
+    public function __construct()
+    {
+        $this->serviceModel = new ServiceModel();
+    }
     public function talentsolution()
     {
         $data = [
@@ -109,21 +115,130 @@ class Services extends BaseController
         ];
     }
 
-    // Fungsi-fungsi yang sudah ada sebelumnya
-    public function dataanotation()
-    {
-        $data = [
-            'title' => 'Data Annotation Services - Startout AI',
-            'description' => 'Professional data annotation services powered by AI and human expertise. High-quality data labeling for machine learning models.',
-            'page' => 'data-annotation',
-            'features' => $this->getAnnotationFeatures()
-        ];
-
-        return view('templates/header', $data)
-             . view('templates/nav')
-             . view('page/dataanotation', $data)
-             . view('templates/footer');
+ public function dataanotation()
+{
+    // 1. Ambil data halaman dari database
+    $pageData = $this->serviceModel->getPageByName('data-annotation');
+    
+    // Debug: Cek data dari database
+    // var_dump($pageData); // Uncomment untuk debugging
+    
+    // 2. Ambil data terkait dari database
+    $features = $this->serviceModel->getFeatures($pageData['id']);
+    $services = $this->serviceModel->getServices($pageData['id']);
+    $stats = $this->serviceModel->getStats($pageData['id']);
+    $steps = $this->serviceModel->getSteps($pageData['id']);
+    $benefits = $this->serviceModel->getBenefits($pageData['id']);
+    
+    // Debug: Cek data terkait
+    // var_dump([
+    //     'features_count' => count($features),
+    //     'services_count' => count($services),
+    //     'stats_count' => count($stats)
+    // ]);
+    
+    // 3. Jika data dari database kosong, gunakan default data
+    if (empty($features)) {
+        $features = $this->getAnnotationFeatures();
     }
+    
+    if (empty($services)) {
+        $services = $this->getAnnotationSolutions();
+    }
+    
+    if (empty($stats)) {
+        $stats = $this->getDefaultAnnotationStats();
+    }
+    
+    // 4. Siapkan data untuk dikirim ke view
+    $data = [
+        'title' => 'Data Annotation Services - Startout AI',
+        'description' => 'Professional data annotation services powered by AI and human expertise. High-quality data labeling for machine learning models.',
+        'page' => 'data-annotation',
+        
+        // Hero section data
+        'hero_title' => $pageData['hero_title'] ?? '<span class="gradient-text">Data Annotation</span> Services',
+        'hero_subtitle' => $pageData['hero_subtitle'] ?? 'Power your AI models with expertly annotated data at scale',
+        
+        // Section titles
+        'features_title' => $pageData['features_title'] ?? 'Why Choose Our Annotation Services',
+        'services_title' => $pageData['services_title'] ?? 'Our Annotation Solutions',
+        'stats_title' => $pageData['stats_title'] ?? 'Quality Metrics',
+        'how_it_works_title' => $pageData['how_it_works_title'] ?? 'Our Annotation Process',
+        'how_it_works_subtitle' => $pageData['how_it_works_subtitle'] ?? 'Professional data annotation with multi-layer quality assurance',
+        'cta_title' => $pageData['cta_title'] ?? 'Improve Your AI Models',
+        'cta_subtitle' => $pageData['cta_subtitle'] ?? 'Start with high-quality training data today',
+        'cta_button_text' => $pageData['cta_button_text'] ?? 'Schedule Consultation',
+        'benefits_title' => $pageData['benefits_title'] ?? 'Benefits of Professional Annotation',
+        
+        // Dynamic content
+        'features' => $features,
+        'services' => $services,
+        'stats' => $stats,
+        'steps' => $steps,
+        'benefits' => $benefits
+    ];
+    
+    // 5. Render view
+    return view('templates/header', $data)
+         . view('templates/nav')
+         . view('page/dataanotation', $data)
+         . view('templates/footer');
+}
+
+// Tambahkan method untuk default annotation solutions jika belum ada
+private function getAnnotationSolutions()
+{
+    return [
+        [
+            'title' => 'Computer Vision Labeling',
+            'description' => 'Bounding boxes, polygons, keypoints, and semantic segmentation for training vision models.'
+        ],
+        [
+            'title' => 'Natural Language Processing',
+            'description' => 'Text annotation, entity extraction, intent classification, and sentiment analysis.'
+        ],
+        [
+            'title' => 'Audio & Speech Data',
+            'description' => 'Transcription, speaker diarization, and acoustic event detection for speech AI.'
+        ],
+        [
+            'title' => '3D Point Cloud Annotation',
+            'description' => 'LiDAR and 3D sensor data labeling for autonomous vehicles and robotics.'
+        ],
+        [
+            'title' => 'Medical Data Labeling',
+            'description' => 'Healthcare-grade annotation for medical imaging, clinical notes, and patient records.'
+        ],
+        [
+            'title' => 'Custom Taxonomy Design',
+            'description' => 'Develop specialized labeling schemas tailored to your unique AI requirements.'
+        ]
+    ];
+}
+
+// Tambahkan method untuk default stats jika belum ada
+private function getDefaultAnnotationStats()
+{
+    return [
+        [
+            'value' => '99%+',
+            'label' => 'Accuracy'
+        ],
+        [
+            'value' => '50+',
+            'label' => 'Languages'
+        ],
+        [
+            'value' => '1M+',
+            'label' => 'Data Points Daily'
+        ],
+        [
+            'value' => '24/7',
+            'label' => 'Operations'
+        ]
+    ];
+}
 
     public function trustsafety()
     {
@@ -212,14 +327,38 @@ class Services extends BaseController
         ];
     }
 
-    public function contentModeration()
+public function contentModeration()
     {
+        // Get page data from database
+        $pageData = $this->serviceModel->getPageByName('content-moderation');
+        
+        // Get related data
+        $features = $this->serviceModel->getFeatures($pageData['id']);
+        $services = $this->serviceModel->getServices($pageData['id']);
+        $stats = $this->serviceModel->getStats($pageData['id']);
+        $steps = $this->serviceModel->getSteps($pageData['id']);
+        $benefits = $this->serviceModel->getBenefits($pageData['id']);
+        
         $data = [
             'title' => 'Content Moderation Services - Startout AI',
             'description' => 'Protect your platform and users with intelligent content moderation that scales with your growth. AI-powered moderation with human expertise.',
             'page' => 'content-moderation',
-            'features' => $this->getContentModerationFeatures(),
-            'services' => $this->getContentModerationServices()
+            'hero_title' => $pageData['hero_title'],
+            'hero_subtitle' => $pageData['hero_subtitle'],
+            'features_title' => $pageData['features_title'],
+            'services_title' => $pageData['services_title'],
+            'stats_title' => $pageData['stats_title'],
+            'how_it_works_title' => $pageData['how_it_works_title'],
+            'how_it_works_subtitle' => $pageData['how_it_works_subtitle'],
+            'cta_title' => $pageData['cta_title'],
+            'cta_subtitle' => $pageData['cta_subtitle'],
+            'cta_button_text' => $pageData['cta_button_text'],
+            'benefits_title' => $pageData['benefits_title'],
+            'features' => $features,
+            'services' => $services,
+            'stats' => $stats,
+            'steps' => $steps,
+            'benefits' => $benefits
         ];
 
         return view('templates/header', $data)
@@ -227,7 +366,6 @@ class Services extends BaseController
              . view('page/content_moderation', $data)
              . view('templates/footer');
     }
-
     private function getContentModerationFeatures()
     {
         return [
@@ -284,23 +422,46 @@ class Services extends BaseController
         ];
     }
 
-    public function customersupport()
-    {
-        $data = [
-            'title' => 'Customer Support - Startout AI',
-            'description' => 'Hybrid AI and human support teams delivering exceptional customer experiences across all channels.',
-            'page' => 'customer-support',
-            'features' => $this->getCustomerSupportFeatures(),
-            'solutions' => $this->getCustomerSupportSolutions(),
-            'stats' => $this->getCustomerSupportStats()
-        ];
+// Update method customersupport() di Services.php
+public function customersupport()
+{
+    // Get page data from database
+    $pageData = $this->serviceModel->getPageByName('customer-support');
+    
+    // Get related data
+    $features = $this->serviceModel->getFeatures($pageData['id']);
+    $services = $this->serviceModel->getServices($pageData['id']);
+    $stats = $this->serviceModel->getStats($pageData['id']);
+    $steps = $this->serviceModel->getSteps($pageData['id']);
+    $benefits = $this->serviceModel->getBenefits($pageData['id']);
+    
+    $data = [
+        'title' => 'Customer Support - Startout AI',
+        'description' => 'Hybrid AI and human support teams delivering exceptional customer experiences across all channels.',
+        'page' => 'customer-support',
+        'hero_title' => $pageData['hero_title'],
+        'hero_subtitle' => $pageData['hero_subtitle'],
+        'features_title' => $pageData['features_title'],
+        'services_title' => $pageData['services_title'],
+        'stats_title' => $pageData['stats_title'],
+        'how_it_works_title' => $pageData['how_it_works_title'],
+        'how_it_works_subtitle' => $pageData['how_it_works_subtitle'],
+        'cta_title' => $pageData['cta_title'],
+        'cta_subtitle' => $pageData['cta_subtitle'],
+        'cta_button_text' => $pageData['cta_button_text'],
+        'benefits_title' => $pageData['benefits_title'],
+        'features' => $features,
+        'services' => $services,
+        'stats' => $stats,
+        'steps' => $steps,
+        'benefits' => $benefits
+    ];
 
-        return view('templates/header', $data)
-             . view('templates/nav')
-             . view('page/customer_support', $data)
-             . view('templates/footer');
-    }
-
+    return view('templates/header', $data)
+         . view('templates/nav')
+         . view('page/customer_support', $data)
+         . view('templates/footer');
+}
     private function getCustomerSupportFeatures()
     {
         return [
@@ -416,4 +577,6 @@ class Services extends BaseController
              . view('page/gaming_entertainment', $data)
              . view('templates/footer');
     }
+    
+
 }

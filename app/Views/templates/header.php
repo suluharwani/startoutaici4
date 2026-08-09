@@ -281,5 +281,16 @@ input[type="text"]:focus, input[type="email"]:focus {
     border-color: var(--primary);
 }
     </style>
+    <!-- Script untuk mencegah flash of unstyled content -->
+    <script>
+        (function() {
+            // Cek localStorage untuk tema
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.body.classList.add('dark');
+            }
+        })();
+    </script>
 </head>
 <body>

@@ -92,51 +92,12 @@ class StartJourneyModel extends Model
     // Method untuk default offices jika database kosong
     public function getDefaultOffices()
     {
+        // Hanya Yogyakarta dengan nomor telepon yang diupdate
         return [
             [
                 'city' => 'Yogyakarta, Indonesia',
                 'zip' => '55281',
-                'phone' => '+62 274 123 4567'
-            ],
-            [
-                'city' => 'Kuala Lumpur, Malaysia',
-                'zip' => '50088',
-                'phone' => '+60 3 1234 5678'
-            ],
-            [
-                'city' => 'Amsterdam, Netherlands',
-                'zip' => '1012 AB',
-                'phone' => '+31 20 123 4567'
-            ],
-            [
-                'city' => 'Sydney, Australia',
-                'zip' => '2000',
-                'phone' => '+61 2 1234 5678'
-            ],
-            [
-                'city' => 'London, UK',
-                'zip' => 'EC1A 1BB',
-                'phone' => '+44 20 1234 5678'
-            ],
-            [
-                'city' => 'Los Angeles, USA',
-                'zip' => '90001',
-                'phone' => '+1 213 123 4567'
-            ],
-            [
-                'city' => 'Ottawa, Canada',
-                'zip' => 'K1A 0A6',
-                'phone' => '+1 613 123 4567'
-            ],
-            [
-                'city' => 'Shibuya, Japan',
-                'zip' => '150-0002',
-                'phone' => '+81 3 1234 5678'
-            ],
-            [
-                'city' => 'Berlin, Germany',
-                'zip' => '10115',
-                'phone' => '+49 30 1234 5678'
+                'phone' => '+62 860-2268-666'
             ]
         ];
     }

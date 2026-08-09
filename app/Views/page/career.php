@@ -9,6 +9,12 @@
             <p class="text-xl text-muted-foreground mb-8 animate-fade-in">
                 <?= $hero_subtitle ?>
             </p>
+            <a href="https://www.linkedin.com/company/startout-ai/" target="_blank" rel="noopener noreferrer">
+                <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 gradient-bg shadow-glow">
+                    <i class="fab fa-linkedin-in mr-2"></i>
+                    Follow Us on LinkedIn
+                </button>
+            </a>
         </div>
     </section>
 
@@ -91,9 +97,10 @@
                 <div class="p-8 text-center">
                     <h3 class="text-xl font-semibold mb-4">Join Our Talent Pool</h3>
                     <p class="text-muted-foreground mb-6">Even if we don't have a perfect match right now, we're always looking for talented people.</p>
-                    <a href="/start-journey?type=talent-pool">
+                    <a href="https://www.linkedin.com/company/startout-ai/" target="_blank" rel="noopener noreferrer">
                         <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 gradient-bg shadow-glow">
-                            Submit Your Resume
+                            <i class="fab fa-linkedin-in mr-2"></i>
+                            Connect on LinkedIn
                         </button>
                     </a>
                 </div>

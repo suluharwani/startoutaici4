@@ -92,7 +92,7 @@
             <?= $cta_subtitle ?? 'Start saving time and money with intelligent process automation' ?>
         </p>
         <div class="pt-4">
-            <a href="/schedule-consultation">
+            <a href="/start-journey">
                 <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 gradient-bg shadow-glow">
                     <?= $cta_button_text ?? 'Schedule Consultation' ?>
                 </button>

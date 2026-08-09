@@ -8,7 +8,6 @@
                     <ul class="space-y-3">
                         <li><a href="/services/data-annotation" class="text-sm hover-gradient-text">Data Annotation</a></li>
                         <li><a href="/services/trust-safety" class="text-sm hover-gradient-text">Trust & Safety</a></li>
-                        <li><a href="/services/content-moderation" class="text-sm hover-gradient-text">Content Moderation</a></li>
                         <li><a href="/services/customer-support" class="text-sm hover-gradient-text">Customer Support</a></li>
                         <li><a href="/services/talent-solution" class="text-sm hover-gradient-text">Talent Solution</a></li>
                         <li><a href="/services/social-media" class="text-sm hover-gradient-text">Social Media</a></li>
@@ -61,10 +60,14 @@
                     Empowering startups with intelligent AI solutions for the modern business landscape.
                 </p>
                 <div class="flex justify-center space-x-4">
+                    <!-- Twitter/X - Changed to X logo -->
                     <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X (formerly Twitter)" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground h-10 w-10">
-                        <i class="fab fa-twitter"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground h-10 w-10">
+                    <!-- LinkedIn - Updated URL -->
+                    <a href="https://www.linkedin.com/company/startout-ai/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground h-10 w-10">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                     <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground h-10 w-10">
@@ -73,7 +76,8 @@
                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground h-10 w-10">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="mailto:contact@startoutai.com" aria-label="Email" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground h-10 w-10">
+                    <!-- Email - Updated to hi@startoutai.com -->
+                    <a href="mailto:hi@startoutai.com" aria-label="Email" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium hover:bg-accent hover:text-accent-foreground h-10 w-10">
                         <i class="fas fa-envelope"></i>
                     </a>
                 </div>
@@ -92,7 +96,7 @@
     <i class="fas fa-arrow-up"></i>
 </div>
 
- <script>
+<script>
         // Mobile Menu Toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -106,9 +110,17 @@
             mobileMenu.classList.remove('active');
         });
         
-        // Theme Toggle
+        // Theme Toggle - Fix: Save preference to localStorage
         const themeToggle = document.querySelector('.theme-toggle');
         const themeIcon = themeToggle.querySelector('i');
+        
+        // Check saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
         
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark');
@@ -116,9 +128,11 @@
             if (document.body.classList.contains('dark')) {
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
             } else {
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
             }
         });
         

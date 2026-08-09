@@ -109,7 +109,7 @@
         <p class="text-xl text-muted-foreground mb-8">
             <?php echo $cta_subtitle ?? 'Let\'s create a winning social media strategy together'; ?>
         </p>
-        <a href="/schedule-consultation">
+        <a href="/start-journey">
             <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 gradient-bg shadow-glow">
                 <?php echo $cta_button_text ?? 'Schedule Consultation'; ?>
             </button>

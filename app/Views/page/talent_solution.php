@@ -83,7 +83,7 @@
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-6"><?= $cta_title ?></h2>
             <p class="text-xl text-muted-foreground mb-8"><?= $cta_subtitle ?></p>
-            <a href="/schedule-consultation" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 gradient-bg shadow-glow">
+            <a href="/start-journey" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 gradient-bg shadow-glow">
                 <?= $cta_button_text ?>
             </a>
         </div>

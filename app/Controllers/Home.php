@@ -132,7 +132,7 @@ private function getDefaultHomeServices()
                 'Ticket Prioritization'
             ],
             'button_text' => 'Learn More',
-            'button_url' => '/customer-experience-ai'
+            'button_url' => '/services/customer-support'  // <-- FIX: Added URL
         ]
     ];
 }

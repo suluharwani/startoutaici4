@@ -17,7 +17,7 @@
                     <div class="dropdown-content">
                         <a href="/services/data-annotation">Data Annotation</a>
                         <a href="/services/trust-safety">Trust & Safety</a>
-                        <a href="/services/content-moderation">Content Moderation</a>
+                        <!-- <a href="/services/content-moderation">Content Moderation</a> --> <!-- REMOVED -->
                         <a href="/services/customer-support">Customer Support</a>
                         <a href="/services/talent-solution">Talent Solution</a>
                         <a href="/services/social-media">Social Media</a>
@@ -97,7 +97,7 @@
                 <div class="space-y-1">
                     <a href="/services/data-annotation" class="block py-2 text-sm hover-gradient-text">Data Annotation</a>
                     <a href="/services/trust-safety" class="block py-2 text-sm hover-gradient-text">Trust & Safety</a>
-                    <a href="/services/content-moderation" class="block py-2 text-sm hover-gradient-text">Content Moderation</a>
+                    <!-- <a href="/services/content-moderation" class="block py-2 text-sm hover-gradient-text">Content Moderation</a> --> <!-- REMOVED -->
                     <a href="/services/customer-support" class="block py-2 text-sm hover-gradient-text">Customer Support</a>
                     <a href="/services/talent-solution" class="block py-2 text-sm hover-gradient-text">Talent Solution</a>
                     <a href="/services/social-media" class="block py-2 text-sm hover-gradient-text">Social Media</a>

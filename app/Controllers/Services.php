@@ -149,22 +149,12 @@ class Services extends BaseController
     // 1. Ambil data halaman dari database
     $pageData = $this->serviceModel->getPageByName('data-annotation');
     
-    // Debug: Cek data dari database
-    // var_dump($pageData); // Uncomment untuk debugging
-    
     // 2. Ambil data terkait dari database
     $features = $this->serviceModel->getFeatures($pageData['id']);
     $services = $this->serviceModel->getServices($pageData['id']);
     $stats = $this->serviceModel->getStats($pageData['id']);
     $steps = $this->serviceModel->getSteps($pageData['id']);
     $benefits = $this->serviceModel->getBenefits($pageData['id']);
-    
-    // Debug: Cek data terkait
-    // var_dump([
-    //     'features_count' => count($features),
-    //     'services_count' => count($services),
-    //     'stats_count' => count($stats)
-    // ]);
     
     // 3. Jika data dari database kosong, gunakan default data
     if (empty($features)) {
@@ -408,45 +398,46 @@ public function trustsafety()
         ];
     }
 
-public function contentModeration()
-    {
-        // Get page data from database
-        $pageData = $this->serviceModel->getPageByName('content-moderation');
-        
-        // Get related data
-        $features = $this->serviceModel->getFeatures($pageData['id']);
-        $services = $this->serviceModel->getServices($pageData['id']);
-        $stats = $this->serviceModel->getStats($pageData['id']);
-        $steps = $this->serviceModel->getSteps($pageData['id']);
-        $benefits = $this->serviceModel->getBenefits($pageData['id']);
-        
-        $data = [
-            'title' => 'Content Moderation Services - Startout AI',
-            'description' => 'Protect your platform and users with intelligent content moderation that scales with your growth. AI-powered moderation with human expertise.',
-            'page' => 'content-moderation',
-            'hero_title' => $pageData['hero_title'],
-            'hero_subtitle' => $pageData['hero_subtitle'],
-            'features_title' => $pageData['features_title'],
-            'services_title' => $pageData['services_title'],
-            'stats_title' => $pageData['stats_title'],
-            'how_it_works_title' => $pageData['how_it_works_title'],
-            'how_it_works_subtitle' => $pageData['how_it_works_subtitle'],
-            'cta_title' => $pageData['cta_title'],
-            'cta_subtitle' => $pageData['cta_subtitle'],
-            'cta_button_text' => $pageData['cta_button_text'],
-            'benefits_title' => $pageData['benefits_title'],
-            'features' => $features,
-            'services' => $services,
-            'stats' => $stats,
-            'steps' => $steps,
-            'benefits' => $benefits
-        ];
+// public function contentModeration() - REMOVED
+// {
+//     // Get page data from database
+//     $pageData = $this->serviceModel->getPageByName('content-moderation');
+//     
+//     // Get related data
+//     $features = $this->serviceModel->getFeatures($pageData['id']);
+//     $services = $this->serviceModel->getServices($pageData['id']);
+//     $stats = $this->serviceModel->getStats($pageData['id']);
+//     $steps = $this->serviceModel->getSteps($pageData['id']);
+//     $benefits = $this->serviceModel->getBenefits($pageData['id']);
+//     
+//     $data = [
+//         'title' => 'Content Moderation Services - Startout AI',
+//         'description' => 'Protect your platform and users with intelligent content moderation that scales with your growth. AI-powered moderation with human expertise.',
+//         'page' => 'content-moderation',
+//         'hero_title' => $pageData['hero_title'],
+//         'hero_subtitle' => $pageData['hero_subtitle'],
+//         'features_title' => $pageData['features_title'],
+//         'services_title' => $pageData['services_title'],
+//         'stats_title' => $pageData['stats_title'],
+//         'how_it_works_title' => $pageData['how_it_works_title'],
+//         'how_it_works_subtitle' => $pageData['how_it_works_subtitle'],
+//         'cta_title' => $pageData['cta_title'],
+//         'cta_subtitle' => $pageData['cta_subtitle'],
+//         'cta_button_text' => $pageData['cta_button_text'],
+//         'benefits_title' => $pageData['benefits_title'],
+//         'features' => $features,
+//         'services' => $services,
+//         'stats' => $stats,
+//         'steps' => $steps,
+//         'benefits' => $benefits
+//     ];
+//
+//     return view('templates/header', $data)
+//          . view('templates/nav')
+//          . view('page/content_moderation', $data)
+//          . view('templates/footer');
+// }
 
-        return view('templates/header', $data)
-             . view('templates/nav')
-             . view('page/content_moderation', $data)
-             . view('templates/footer');
-    }
     private function getContentModerationFeatures()
     {
         return [

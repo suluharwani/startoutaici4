@@ -175,32 +175,6 @@
     </div>
 </section>
 
-<!-- Newsletter CTA -->
-<section class="py-20 px-4 lg:px-8">
-    <div class="container mx-auto max-w-3xl text-center">
-        <div class="gradient-border-card rounded-lg border p-8">
-            <div class="w-16 h-16 rounded-lg gradient-bg flex items-center justify-center mx-auto mb-6">
-                <i class="fas fa-envelope text-white text-2xl"></i>
-            </div>
-            <h2 class="text-3xl font-bold mb-4"><?= $newsletter_title ?? 'Stay Updated' ?></h2>
-            <p class="text-xl text-muted-foreground mb-8">
-                <?= $newsletter_subtitle ?? 'Get the latest AI insights delivered to your inbox. Join 10,000+ leaders who read our newsletter.' ?>
-            </p>
-            <div class="max-w-md mx-auto">
-                <div class="flex gap-2">
-                    <input type="email" placeholder="Enter your email" class="flex-1 h-12 rounded-md border border-input bg-background px-4 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm">
-                    <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-6 py-2 rounded-md gradient-bg shadow-glow">
-                        Subscribe
-                    </button>
-                </div>
-                <p class="text-xs text-muted-foreground mt-3">
-                    By subscribing, you agree to our Privacy Policy. Unsubscribe anytime.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Stats Section -->
 <?php if (!empty($stats)): ?>
 <section class="py-16 px-4 lg:px-8 bg-secondary/20">

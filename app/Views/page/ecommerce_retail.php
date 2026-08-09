@@ -1,7 +1,7 @@
 <section class="py-20 px-4 lg:px-8">
     <div class="container mx-auto max-w-4xl text-center">
         <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-            <?= $hero_title ?? '<span class="gradient-text">E-Commerce & Retail</span> AI Solutions' ?>
+            <?= $hero_title ?? '<span class="gradient-text">E-Commerce & Retail</span> Solutions' ?>
         </h1>
         <p class="text-xl text-muted-foreground mb-8 animate-fade-in">
             <?= $hero_subtitle ?? 'Transform your retail business with intelligent automation and personalized shopping experiences' ?>
@@ -13,6 +13,7 @@
         </a>
     </div>
 </section>
+
 <?php if (!empty($solutions)): ?>
 <section class="py-16 px-4 lg:px-8 bg-secondary/20">
     <div class="container mx-auto max-w-6xl">
@@ -116,7 +117,7 @@
         <?php endif; ?>
         
         <?php if (!empty($cta_button_text)): ?>
-        <a href="<?= $cta_button_url ?? '/schedule-consultation' ?>">
+        <a href="/start-journey">
             <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 h-11 rounded-md px-8 gradient-bg shadow-glow">
                 <?= $cta_button_text ?>
             </button>
